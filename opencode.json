@@ -1,0 +1,50 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "instructions": [".opencode/agent/gtd-master.md", "newWorkflow.md"],
+    "mode": {
+        "capture": {
+            "prompt": "{file:./.opencode/agent/capture.md}",
+            "temperature": 0.2,
+            "model": "gemini-2.0-flash"
+        },
+        "plan": {
+            "prompt": "{file:./.opencode/agent/daily-planning.md}",
+            "temperature": 0.1,
+            "model": "claude-sonnet-4"
+        },
+        "execute": {
+            "prompt": "{file:./.opencode/agent/execution.md}",
+            "temperature": 0.2,
+            "model": "claude-sonnet-4",
+            "tools": {
+                "write": false,
+                "edit": false
+            }
+        },
+        "review": {
+            "prompt": "{file:./.opencode/agent/review-phase.md}",
+            "temperature": 0.1,
+            "model": "claude-sonnet-4"
+        }
+    },
+    "mcp": {
+        "things": {
+            "type": "local",
+            "enabled": true,
+            "command": [
+                "uv",
+                "--directory",
+                "/Users/yushi/repo/mcp/things-mcp",
+                "run",
+                "things_server.py",
+                "things_auth_token",
+                "PZakAABgAACAJ_FVAQAAAA"
+            ]
+        },
+        "google-calendar": {
+            "type": "local",
+            "enabled": true,
+            "command": ["npx", "@cocal/google-calendar-mcp"]
+        }
+    }
+}
