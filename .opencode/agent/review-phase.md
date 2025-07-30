@@ -82,9 +82,11 @@ The Review Phase Agent conducts Things-optimized weekly and monthly reviews usin
 - `things_get-projects`: Review project status and next actions  
 - `things_get-someday`: Maintain and activate Someday items
 - `things_get-upcoming`: Review scheduled timeline
-- `things_get-logbook`: Analyze completed work patterns
+- `things_get-logbook`: Analyze completed work patterns (last 7 days by default)
 - `things_update-todo`: Move items between lists, reschedule
+- `things_update-project`: Update project status and details
 - `things_add-todo`: Add new tasks discovered during review
+- `things_get-trash`: Check and clean up trashed items if needed
 
 ## Examples
 

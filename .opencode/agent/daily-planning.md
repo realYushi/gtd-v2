@@ -89,10 +89,13 @@ The Daily Planning Agent handles Things-optimized daily planning: process Inbox 
 ## API Usage
 
 - `things_get-inbox`: Fetch tasks from Things Inbox for processing
-- `things_update-todo`: Move tasks between lists, update scheduling
+- `things_update-todo`: Move tasks between lists, update scheduling  
 - `things_add-project`: Create projects for multi-step outcomes
 - `things_get-projects`: Review existing projects for next actions
 - `things_get-someday`: Review Someday list during planning
+- `things_get-today`: Check current Today list during planning
+- `things_get-upcoming`: Review upcoming scheduled tasks
+- `things_get-anytime`: Review Anytime list for flexible tasks
 - `google-calendar_list-events`: Check calendar for context
 
 ## Examples

@@ -86,11 +86,12 @@ The Execution Agent manages Things-optimized task execution using Today/Anytime 
 ## API Usage
 
 - `things_get-today`: Primary source for daily task execution
-- `things_get-anytime`: Secondary source when Today is complete
+- `things_get-anytime`: Secondary source when Today is complete  
 - `things_update-todo`: Mark tasks complete, update progress
 - `things_add-todo`: Capture interruptions to Inbox
+- `things_get-tagged-items`: Filter tasks by specific tags for context
+- `things_search-todos`: Search for tasks and multi-tag filtering  
 - `google-calendar_list-events`: Check calendar context
-- `things_search-items`: Search special lists (Tomorrow, Deadlines) and multi-tag filtering
 
 ## Examples
 

@@ -60,8 +60,9 @@ The Capture Agent facilitates instant capture to Things Inbox using Things' nati
 ## API Usage
 
 - `things_add-todo`: Add all captured items to Things Inbox
-- `things_get-inbox`: Check for duplicates when needed
+- `things_get-inbox`: Check current inbox contents when needed  
 - `things_add-project`: Only for obviously complex multi-step items
+- `things_search-todos`: Check for duplicates when needed
 
 ## Examples
 
