@@ -10,12 +10,12 @@
         "plan": {
             "prompt": "{file:./.opencode/agent/daily-planning.md}",
             "temperature": 0.1,
-            "model": "claude-sonnet-4"
+            "model": "gemini-2.5-pro"
         },
         "execute": {
             "prompt": "{file:./.opencode/agent/execution.md}",
             "temperature": 0.2,
-            "model": "claude-sonnet-4",
+            "model": "gemini-2.5-pro",
             "tools": {
                 "write": false,
                 "edit": false
@@ -24,7 +24,7 @@
         "review": {
             "prompt": "{file:./.opencode/agent/review-phase.md}",
             "temperature": 0.1,
-            "model": "claude-sonnet-4"
+            "model": "gemini-2.5-pro"
         }
     },
     "mcp": {
@@ -36,9 +36,7 @@
                 "--directory",
                 "/Users/yushi/repo/mcp/things-mcp",
                 "run",
-                "things_server.py",
-                "things_auth_token",
-                "PZakAABgAACAJ_FVAQAAAA"
+                "things_server.py"
             ]
         },
         "google-calendar": {

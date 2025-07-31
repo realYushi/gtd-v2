@@ -26,7 +26,7 @@ Built with [opencode](https://opencode.ai) and powered by specialized agents for
 - **[opencode](https://opencode.ai)** - AI-powered development environment
 - **[Things MCP](https://github.com/excelsier/things-fastmcp)** - Direct integration with Things app
 - **[Google Calendar MCP](https://github.com/nspady/google-calendar-mcp)** - Calendar synchronization
-- **Multiple AI Models** - Gemini 2.5 Pro, Claude Sonnet 4, GPT-4.1, DeepSeek R1
+- **Multiple AI Models** - Gemini 2.0 Flash, Gemini 2.5 Pro
 
 ## 📁 Project Structure
 
