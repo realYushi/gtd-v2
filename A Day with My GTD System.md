@@ -57,7 +57,7 @@ _How the opencode GTD agent system works in practice_
     - When? This week
     - **Action**: Move to Anytime list
 
-_[Continue processing remaining 8 items: memeopry mcp, summer of tech, job watching agent, workflow audio transcription, leader layer auto turn off, lab special topic, rand d, Test Task]_
+_[Continue processing remaining 8 items]_
 
 **Inbox Status**: ✅ ZERO (all 13 items processed)
 
