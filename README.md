@@ -11,9 +11,9 @@ A Things-native Getting Things Done (GTD) workflow optimized for daily productiv
 -   [System Architecture](#️-system-architecture)
 -   [GTD Workflow](#-gtd-workflow)
 -   [Project Structure](#-project-structure)
-- [Requirements](#-requirements)
-- [Important Warning](#️-important-warning)
-- [Setup Guide](#️-setup-guide)
+-   [Requirements](#-requirements)
+-   [Important Warning](#️-important-warning)
+-   [Setup Guide](#️-setup-guide)
 -   [How to Use](#-how-to-use)
 -   [Daily Workflow](#-daily-workflow)
 -   [Customization](#-customization)
@@ -25,10 +25,10 @@ This is my personal implementation of David Allen's GTD methodology, specificall
 
 The system focuses on:
 
-- **Instant capture** - Everything goes to Things Inbox first (Ctrl+Space)
-- **Daily planning** - Inbox to zero using Things native Today/Upcoming/Anytime/Someday
-- **Focused execution** - Today/Anytime focus with Quick Find context switching
-- **Weekly reviews** - Areas/Projects maintenance for sustainable productivity
+-   **Instant capture** - Everything goes to Things Inbox first (Ctrl+Space)
+-   **Daily planning** - Inbox to zero using Things native Today/Upcoming/Anytime/Someday
+-   **Focused execution** - Today/Anytime focus with Quick Find context switching
+-   **Weekly reviews** - Areas/Projects maintenance for sustainable productivity
 
 > **📖 See It In Action**: Want to see how this actually works? Check out [A Day with My GTD System.md](A%20Day%20with%20My%20GTD%20System.md) - a complete walkthrough from 6 AM wake-up to 10 PM completion, showing how the system handles real interruptions, context switching, and maintains focus throughout a typical day!
 
@@ -184,16 +184,15 @@ flowchart TD
 └── review-phase.md       # Weekly review system
 
 A Day with My GTD System.md   # Real workflow example
-newWorkflow.md               # Workflow documentation
 opencode.json               # Agent configuration
 ```
 
 ## 📋 Requirements
 
-- **Things 3** (macOS/iOS) - _Or any todo list app with MCP integration_
-- **Google Calendar** access
-- **opencode** development environment
-- **MCP servers** for your chosen todo app and Google Calendar integration
+-   **Things 3** (macOS/iOS) - _Or any todo list app with MCP integration_
+-   **Google Calendar** access
+-   **opencode** development environment
+-   **MCP servers** for your chosen todo app and Google Calendar integration
 
 > **💡 Using a Different Todo App?**  
 > This system is built for Things 3, but you can adapt it to work with any todo list app:
@@ -208,17 +207,18 @@ opencode.json               # Agent configuration
 
 **AI systems can make mistakes!** This system has direct access to your Tasks and Calendar data. The AI agents may:
 
-- Accidentally delete or modify tasks
-- Move tasks to wrong lists or dates
-- Create duplicate entries
-- Mess up calendar events or scheduling
+-   Accidentally delete or modify tasks
+-   Move tasks to wrong lists or dates
+-   Create duplicate entries
+-   Mess up calendar events or scheduling
 
 **Recommendations:**
-- **Test with non-critical data first** - Use a separate Things database or test calendar
-- **Start slowly** - Begin with read-only commands before letting AI modify your data
-- **Backup regularly** - Export your Things data and sync calendar to multiple accounts
-- **Review AI actions** - Always verify what the AI did, especially for important tasks
-- **Use at your own risk** - This is experimental software for personal use
+
+-   **Test with non-critical data first** - Use a separate Things database or test calendar
+-   **Start slowly** - Begin with read-only commands before letting AI modify your data
+-   **Backup regularly** - Export your Things data and sync calendar to multiple accounts
+-   **Review AI actions** - Always verify what the AI did, especially for important tasks
+-   **Use at your own risk** - This is experimental software for personal use
 
 **For beginners:** Consider starting in "read-only" mode by disabling write permissions in the agent configurations until you're comfortable with the system's behavior.
 
