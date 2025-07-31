@@ -25,10 +25,12 @@ This is my personal implementation of David Allen's GTD methodology, specificall
 
 The system focuses on:
 
--   **Instant capture** - Everything goes to Things Inbox first (Ctrl+Space)
--   **Daily planning** - Inbox to zero using Things native Today/Upcoming/Anytime/Someday
--   **Focused execution** - Today/Anytime focus with Quick Find context switching
--   **Weekly reviews** - Areas/Projects maintenance for sustainable productivity
+- **Instant capture** - Everything goes to Things Inbox first (Ctrl+Space)
+- **Daily planning** - Inbox to zero using Things native Today/Upcoming/Anytime/Someday
+- **Focused execution** - Today/Anytime focus with Quick Find context switching
+- **Weekly reviews** - Areas/Projects maintenance for sustainable productivity
+
+> **📖 See It In Action**: Want to see how this actually works? Check out [A Day with My GTD System.md](A%20Day%20with%20My%20GTD%20System.md) - a complete walkthrough from 6 AM wake-up to 10 PM completion, showing how the system handles real interruptions, context switching, and maintains focus throughout a typical day!
 
 ## 🎪 Key Features
 
