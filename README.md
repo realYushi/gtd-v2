@@ -43,13 +43,15 @@ The system focuses on:
 
 ## 🤖 Intelligent Agents
 
-Built with [opencode](https://opencode.ai) and powered by specialized agents for each workflow phase:
+Built with [opencode](https://opencode.ai) using a single GTD mode with intelligent agent routing:
 
--   **GTD Master Agent** - Orchestrates the complete workflow
+-   **GTD Master Agent** - Orchestrates the complete workflow and routes requests
 -   **Capture Agent** - Handles instant capture to Things Inbox (Gemini 2.0 Flash)
 -   **Daily Planning Agent** - Processes Inbox to zero each morning (Gemini 2.5 Pro)
--   **Execution Agent** - Manages task selection and context switching (Gemini 2.5 Pro)
+-   **Execution Agent** - Manages task selection and context switching (Gemini 2.5 Pro)  
 -   **Review Phase Agent** - Maintains system health through weekly reviews (Gemini 2.5 Pro)
+
+The system uses **natural language processing** - no mode switching required. Just talk to opencode and it automatically routes your request to the appropriate specialized agent.
 
 ## 🔧 Technology Stack
 
@@ -177,14 +179,14 @@ flowchart TD
 
 ```
 .opencode/agent/          # Specialized workflow agents
-├── gtd-master.md         # Master orchestrator
+├── gtd-master.md         # Master orchestrator and router
 ├── capture.md            # Instant capture handler
 ├── daily-planning.md     # Morning planning routine
 ├── execution.md          # Task execution guidance
 └── review-phase.md       # Weekly review system
 
 A Day with My GTD System.md   # Real workflow example
-opencode.json               # Agent configuration
+opencode.json               # Single GTD mode + agent configuration
 ```
 
 ## 📋 Requirements
@@ -340,65 +342,71 @@ Enable these Things settings for optimal GTD workflow:
     opencode
     ```
 
-2. **Ask for help directly in opencode:**
+2. **Start using the GTD system with natural language:**
 
     ```
-    How do I use this GTD system?
-    What commands are available?
-    Show me how to capture tasks
+    # The system automatically routes to appropriate agents
+    Plan my day                    # → Daily Planning Agent
+    Capture: Call dentist tomorrow # → Capture Agent  
+    What should I work on next?    # → Execution Agent
+    Start weekly review           # → Review Phase Agent
     ```
 
-3. **Switch between specialized agents using Tab:**
-    - Press **Tab** in opencode to see available modes: `capture`, `plan`, `execute`, `review`
-    - Type the mode name to switch agents
-    - Each agent specializes in different GTD workflow phases
+3. **No mode switching required** - the GTD Master Agent intelligently routes your requests to specialized agents based on your intent.
 
 ### Quick Start Commands
 
-Interact with your GTD system using natural language:
+Interact with your GTD system using natural language - the system automatically routes to the right agent:
 
 ```
-# Start your day with planning
+# Daily planning (routes to Planning Agent)
 Plan my day
-
-# Capture ideas instantly
-Capture: Research new productivity tools
-
-# Get execution guidance
-What should I work on next?
-
-# Weekly system maintenance
-Start weekly review
-```
-
-### Agent Modes (Switch with Tab)
-
-**Capture Mode:**
-
-```
-Add meeting prep to inbox
-Capture: Call dentist tomorrow
-```
-
-**Planning Mode:**
-
-```
 Process my inbox
+
+# Instant capture (routes to Capture Agent)  
+Capture: Research new productivity tools
+Add meeting prep to inbox
+
+# Task execution (routes to Execution Agent)
+What should I work on next?
+Show me high-energy tasks
+I need a quick task before lunch
+
+# System maintenance (routes to Review Agent)
+Start weekly review
+Check all project statuses
+```
+
+### Agent Modes (Automatic Routing)
+
+The system automatically routes your requests to specialized agents:
+
+**Capture Requests** → Capture Agent:
+```
+Capture: Call dentist tomorrow
+Add meeting prep to inbox
+Remember to buy groceries
+```
+
+**Planning Requests** → Daily Planning Agent:
+```
+Plan my day
+Process my inbox  
 Show me what needs scheduling
 ```
 
-**Execution Mode:**
-
+**Execution Requests** → Execution Agent:
 ```
+What should I work on next?
 Show me high-energy tasks
-What's next for low energy?
+I need something quick
 ```
 
-**Review Mode:**
-
+**Review Requests** → Review Phase Agent:
 ```
-Weekly system review
-Check all project statuses
+Start weekly review
+Check all project statuses  
+Review my system health
 ```
 
 ### Things Integration Examples
@@ -419,23 +427,23 @@ Show me @home tasks for low energy
 
 ### Morning (10 minutes)
 
-1. Switch to `plan` mode: Process Things Inbox to zero
-2. Schedule tasks: Today → Upcoming → Anytime → Someday
-3. Energy-match tasks for optimal performance
+1. **Natural planning**: "Plan my day" - automatically routes to Planning Agent
+2. **Inbox processing**: Agent processes Things Inbox to zero
+3. **Energy matching**: Agent schedules tasks optimally: Today → Upcoming → Anytime → Someday
 
 ### Throughout Day
 
-1. Switch to `execute` mode: Work from Today list primarily
-2. Use Quick Find (Cmd+K) for context filtering
-3. Capture interruptions instantly (Ctrl+Space)
-4. Maintain focus with single-task execution
+1. **Intelligent execution**: "What should I work on?" - routes to Execution Agent  
+2. **Context-aware suggestions**: Agent considers your energy, time, and location
+3. **Instant capture**: "Capture: [task]" - routes to Capture Agent automatically
+4. **Maintain focus**: Agent guides single-task execution
 
 ### Weekly (20 minutes)
 
-1. Switch to `review` mode: Review all Areas and Projects
-2. Ensure active next actions exist
-3. Process Someday → Anytime flow
-4. System maintenance and optimization
+1. **System maintenance**: "Start weekly review" - routes to Review Agent
+2. **Project health**: Agent reviews all Areas and Projects for next actions
+3. **Someday processing**: Agent helps move items through Someday → Anytime → Today flow
+4. **System optimization**: Agent maintains clean, trustworthy system
 
 ## 🛠 Customization
 
@@ -451,7 +459,7 @@ Want to adapt this system for your preferred todo app or workflow? Here's how:
 
 1. **Modify Agent Prompts**: Edit the `.opencode/agent/*.md` files to match your preferred GTD approach
 2. **Adjust Temperature Settings**: Fine-tune AI behavior in `opencode.json`
-3. **Add Custom Modes**: Create new agent modes for specialized workflows
+3. **Customize Agent Routing**: Modify the GTD Master Agent logic for different workflow phases
 
 ## 🔒 Privacy Note
 
