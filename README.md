@@ -1,6 +1,6 @@
 # My GTD Buddy
 
-A Things-native Getting Things Done (GTD) workflow optimized for daily productivity. This project implements a streamlined GTD system that leverages Things' built-in strengths with intelligent AI agents to automate workflow management.
+A Things-native Getting Things Done (GTD) workflow optimized for daily productivity. This project implements a streamlined GTD system that leverages Things' built-in strengths with intelligent AI agents to automate workflow managementhttps://github.com/realYushi/my-gtd-buddy.
 
 ## 📑 Table of Contents
 
@@ -245,7 +245,7 @@ uv run things_server.py
 
 ```bash
 # Clone this repository
-git clone <your-repo-url>
+git clone https://github.com/realYushi/my-gtd-buddy
 cd my-gtd-buddy
 
 # Copy opencode.json (update paths for your system)
