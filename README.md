@@ -245,7 +245,7 @@ uv run things_server.py
 
 ```bash
 # Clone this repository
-git clone https://github.com/realYushi/my-gtd-buddy
+git clone https://github.com/realYushi/my-gtd-buddy.git
 cd my-gtd-buddy
 
 # Copy opencode.json (update paths for your system)
