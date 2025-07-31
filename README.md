@@ -11,8 +11,9 @@ A Things-native Getting Things Done (GTD) workflow optimized for daily productiv
 -   [System Architecture](#️-system-architecture)
 -   [GTD Workflow](#-gtd-workflow)
 -   [Project Structure](#-project-structure)
--   [Requirements](#-requirements)
--   [Setup Guide](#️-setup-guide)
+- [Requirements](#-requirements)
+- [Important Warning](#️-important-warning)
+- [Setup Guide](#️-setup-guide)
 -   [How to Use](#-how-to-use)
 -   [Daily Workflow](#-daily-workflow)
 -   [Customization](#-customization)
@@ -187,10 +188,10 @@ opencode.json               # Agent configuration
 
 ## 📋 Requirements
 
--   **Things 3** (macOS/iOS) - _Or any todo list app with MCP integration_
--   **Google Calendar** access
--   **opencode** development environment
--   **MCP servers** for your chosen todo app and Google Calendar integration
+- **Things 3** (macOS/iOS) - _Or any todo list app with MCP integration_
+- **Google Calendar** access
+- **opencode** development environment
+- **MCP servers** for your chosen todo app and Google Calendar integration
 
 > **💡 Using a Different Todo App?**  
 > This system is built for Things 3, but you can adapt it to work with any todo list app:
@@ -200,6 +201,24 @@ opencode.json               # Agent configuration
 > 3. Modify the `opencode.json` configuration to use your new MCP server
 >
 > The core GTD principles and agent workflow remain the same!
+
+## ⚠️ Important Warning
+
+**AI systems can make mistakes!** This system has direct access to your Tasks and Calendar data. The AI agents may:
+
+- Accidentally delete or modify tasks
+- Move tasks to wrong lists or dates
+- Create duplicate entries
+- Mess up calendar events or scheduling
+
+**Recommendations:**
+- **Test with non-critical data first** - Use a separate Things database or test calendar
+- **Start slowly** - Begin with read-only commands before letting AI modify your data
+- **Backup regularly** - Export your Things data and sync calendar to multiple accounts
+- **Review AI actions** - Always verify what the AI did, especially for important tasks
+- **Use at your own risk** - This is experimental software for personal use
+
+**For beginners:** Consider starting in "read-only" mode by disabling write permissions in the agent configurations until you're comfortable with the system's behavior.
 
 ## ⚙️ Setup Guide
 
