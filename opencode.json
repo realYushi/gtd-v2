@@ -1,80 +1,27 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "instructions": [".opencode/agent/gtd-master.md"],
-    "mode": {
-        "gtd": {
-            "prompt": "{file:./.opencode/agent/gtd-master.md}",
-            "temperature": 0.3,
-            "model": "gemini-2.5-pro",
-            "tools": {
-                "write": false,
-                "edit": false,
-                "bash": false
-            }
-        }
-    },
-    "agent": {
-        "capture": {
-            "description": "Things-native capture phase - Everything to Inbox first",
-            "prompt": "{file:./.opencode/agent/capture.md}",
-            "temperature": 0.2,
-            "model": "gemini-2.0-flash",
-            "tools": {
-                "bash": false,
-                "write": false,
-                "edit": false
-            }
-        },
-        "daily-planning": {
-            "description": "Things-native daily planning - Inbox to zero using Things native scheduling", 
-            "prompt": "{file:./.opencode/agent/daily-planning.md}",
-            "temperature": 0.1,
-            "model": "gemini-2.5-pro",
-            "tools": {
-                "bash": false,
-                "write": false,
-                "edit": false
-            }
-        },
-        "execution": {
-            "description": "Things-native execution - Today/Anytime focus with Quick Find context switching",
-            "prompt": "{file:./.opencode/agent/execution.md}",
-            "temperature": 0.2,
-            "model": "gemini-2.5-pro",
-            "tools": {
-                "bash": false,
-                "write": false,
-                "edit": false
-            }
-        },
-        "review-phase": {
-            "description": "Things-native weekly and monthly reviews for system maintenance",
-            "prompt": "{file:./.opencode/agent/review-phase.md}",
-            "temperature": 0.1,
-            "model": "gemini-2.5-pro",
-            "tools": {
-                "bash": false,
-                "write": false,
-                "edit": false
-            }
-        }
-    },
-    "mcp": {
-        "things": {
-            "type": "local",
-            "enabled": true,
-            "command": [
-                "uv",
-                "--directory",
-                "/Users/yushi/repo/mcp/things-mcp",
-                "run",
-                "things_server.py"
-            ]
-        },
-        "google-calendar": {
-            "type": "local",
-            "enabled": true,
-            "command": ["npx", "@cocal/google-calendar-mcp"]
-        }
+  "$schema": "https://opencode.ai/config.json",
+  "mode": {
+    "gtd": {
+      "prompt": "{file:./.opencode/prompts/gtd-master.md}",
+      "temperature": 0.3
     }
+  },
+  "mcp": {
+    "things": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "uv",
+        "--directory",
+        "/Users/yushi/repo/mcp/Things3-MCP",
+        "run",
+        "Things3-MCP-server"
+      ]
+    },
+    "google-calendar": {
+      "type": "local",
+      "enabled": true,
+      "command": ["npx", "@cocal/google-calendar-mcp"]
+    }
+  }
 }
