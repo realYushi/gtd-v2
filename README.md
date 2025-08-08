@@ -43,20 +43,19 @@ The system focuses on:
 
 ## 🤖 Intelligent Agents
 
-Built with [opencode](https://opencode.ai) using a single GTD mode with intelligent agent routing:
+Built with [opencode](https://opencode.ai) using a unified GTD Master Agent that orchestrates specialized workflow components:
 
--   **GTD Master Agent** - Orchestrates the complete workflow and routes requests
--   **Capture Agent** - Handles instant capture to Things Inbox (Gemini 2.0 Flash)
--   **Daily Planning Agent** - Processes Inbox to zero each morning (Gemini 2.5 Pro)
--   **Execution Agent** - Manages task selection and context switching (Gemini 2.5 Pro)  
--   **Review Phase Agent** - Maintains system health through weekly reviews (Gemini 2.5 Pro)
+-   **GTD Master Agent** - Unified orchestrator with intelligent routing and automation framework
+-   **Daily Planning Agent** - Interactive inbox processing with guided decision-making
+-   **Execution Agent** - Context-aware task selection and execution guidance  
+-   **Review Phase Agent** - Strategic system maintenance through guided reviews
 
-The system uses **natural language processing** - no mode switching required. Just talk to opencode and it automatically routes your request to the appropriate specialized agent.
+The system uses **natural language processing** with automatic delegation to specialized workflow phases. No mode switching required - just describe what you want to accomplish and the system routes to the appropriate workflow automation.
 
 ## 🔧 Technology Stack
 
 -   **[opencode](https://opencode.ai)** - AI-powered development environment
--   **[Things MCP](https://github.com/excelsier/things-fastmcp)** - Direct integration with Things app
+-   **[Things3-MCP](https://github.com/rossshannon/Things3-MCP)** - Direct integration with Things app
 -   **[Google Calendar MCP](https://github.com/nspady/google-calendar-mcp)** - Calendar synchronization
 -   **Multiple AI Models** - Gemini 2.0 Flash, Gemini 2.5 Pro
 
@@ -65,13 +64,11 @@ The system uses **natural language processing** - no mode switching required. Ju
 ```mermaid
 graph TB
     subgraph "opencode AI Environment"
-        GTD[GTD Master Agent<br/>Orchestrator]
-        CAP[Capture Agent<br/>Gemini 2.0 Flash]
-        PLAN[Daily Planning Agent<br/>Gemini 2.5 Pro]
-        EXEC[Execution Agent<br/>Gemini 2.5 Pro]
-        REV[Review Agent<br/>Gemini 2.5 Pro]
+        GTD[GTD Master Agent<br/>Unified Orchestrator]
+        PLAN[Daily Planning<br/>Interactive Processing]
+        EXEC[Execution<br/>Context-Aware Selection]
+        REV[Review Phase<br/>Strategic Maintenance]
 
-        GTD --> CAP
         GTD --> PLAN
         GTD --> EXEC
         GTD --> REV
@@ -178,15 +175,16 @@ flowchart TD
 ## 📁 Project Structure
 
 ```
-.opencode/agent/          # Specialized workflow agents
-├── gtd-master.md         # Master orchestrator and router
-├── capture.md            # Instant capture handler
-├── daily-planning.md     # Morning planning routine
-├── execution.md          # Task execution guidance
-└── review-phase.md       # Weekly review system
+.opencode/
+├── agent/                # Specialized workflow components
+│   ├── daily-planning.md # Interactive inbox processing
+│   ├── execution.md      # Context-aware task selection
+│   └── review-phase.md   # Strategic system maintenance
+└── prompts/
+    └── gtd-master.md     # Unified orchestrator and automation framework
 
 A Day with My GTD System.md   # Real workflow example
-opencode.json               # Single GTD mode + agent configuration
+opencode.json               # Single GTD mode configuration
 ```
 
 ## 📋 Requirements
@@ -235,21 +233,22 @@ npm install -g @opencode/cli
 # Install required MCP servers
 npm install -g @cocal/google-calendar-mcp
 
-# Clone Things MCP server
-git clone https://github.com/excelsier/things-fastmcp.git
-cd things-fastmcp
-uv sync  # or pip install -r requirements.txt
+# Clone Things3-MCP server
+git clone https://github.com/rossshannon/Things3-MCP.git
+cd Things3-MCP
+uv sync  # Install dependencies
 ```
 
-### 2. Configure Things MCP
+### 2. Configure Things3-MCP
 
 ```bash
-# Test Things MCP connection
-cd /path/to/things-mcp
-uv run things_server.py
+# Test Things3-MCP connection
+cd /path/to/Things3-MCP
+uv run Things3-MCP-server
 
 # Verify Things access
 # The server should connect to your local Things database
+# Make sure Things app is running on your Mac
 ```
 
 ### 3. Setup Google Calendar Integration
@@ -279,20 +278,31 @@ Edit `opencode.json` to match your setup:
 
 ```json
 {
-    "mcp": {
-        "things": {
-            "command": [
-                "uv",
-                "--directory",
-                "/YOUR/PATH/TO/things-mcp",
-                "run",
-                "things_server.py"
-            ]
-        },
-        "google-calendar": {
-            "command": ["npx", "@cocal/google-calendar-mcp"]
-        }
+  "$schema": "https://opencode.ai/config.json",
+  "mode": {
+    "gtd": {
+      "prompt": "{file:./.opencode/prompts/gtd-master.md}",
+      "temperature": 0.3
     }
+  },
+  "mcp": {
+    "things": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "uv",
+        "--directory",
+        "/YOUR/PATH/TO/Things3-MCP",
+        "run",
+        "Things3-MCP-server"
+      ]
+    },
+    "google-calendar": {
+      "type": "local", 
+      "enabled": true,
+      "command": ["npx", "@cocal/google-calendar-mcp"]
+    }
+  }
 }
 ```
 
@@ -345,68 +355,74 @@ Enable these Things settings for optimal GTD workflow:
 2. **Start using the GTD system with natural language:**
 
     ```
-    # The system automatically routes to appropriate agents
-    Plan my day                    # → Daily Planning Agent
-    Capture: Call dentist tomorrow # → Capture Agent  
-    What should I work on next?    # → Execution Agent
-    Start weekly review           # → Review Phase Agent
+    # The system automatically routes to appropriate workflow phases
+    Plan my day                    # → Daily Planning Workflow
+    Add task: Call dentist tomorrow # → Built-in Capture
+    What should I work on next?    # → Execution Workflow
+    Start weekly review           # → Review Phase Workflow
     ```
 
-3. **No mode switching required** - the GTD Master Agent intelligently routes your requests to specialized agents based on your intent.
+3. **No mode switching required** - the GTD Master Agent intelligently routes your requests to specialized workflow phases based on your intent.
 
 ### Quick Start Commands
 
-Interact with your GTD system using natural language - the system automatically routes to the right agent:
+Interact with your GTD system using natural language - the system automatically routes to the right workflow:
 
 ```
-# Daily planning (routes to Planning Agent)
+# Daily planning (routes to Planning Workflow)
 Plan my day
 Process my inbox
+Help me organize tasks
 
-# Instant capture (routes to Capture Agent)  
-Capture: Research new productivity tools
-Add meeting prep to inbox
+# Built-in capture
+Add task: Research new productivity tools
+Remember to prep for meeting
+Capture: Buy groceries
 
-# Task execution (routes to Execution Agent)
+# Task execution (routes to Execution Workflow)
 What should I work on next?
 Show me high-energy tasks
 I need a quick task before lunch
 
-# System maintenance (routes to Review Agent)
+# System maintenance (routes to Review Workflow)
 Start weekly review
 Check all project statuses
+Maintain my system
 ```
 
-### Agent Modes (Automatic Routing)
+### Workflow Delegation (Automatic Routing)
 
-The system automatically routes your requests to specialized agents:
+The GTD Master Agent automatically routes your requests to specialized workflow phases:
 
-**Capture Requests** → Capture Agent:
-```
-Capture: Call dentist tomorrow
-Add meeting prep to inbox
-Remember to buy groceries
-```
-
-**Planning Requests** → Daily Planning Agent:
+**Planning Requests** → Daily Planning Workflow:
 ```
 Plan my day
 Process my inbox  
+Help me organize tasks
 Show me what needs scheduling
 ```
 
-**Execution Requests** → Execution Agent:
+**Execution Requests** → Execution Workflow:
 ```
 What should I work on next?
 Show me high-energy tasks
 I need something quick
+Find tasks for my current context
 ```
 
-**Review Requests** → Review Phase Agent:
+**Review Requests** → Review Phase Workflow:
 ```
 Start weekly review
 Check all project statuses  
 Review my system health
+Maintain my GTD system
+```
+
+**Capture Requests** → Built-in Capture:
+```
+Add task: Call dentist tomorrow
+Remember to buy groceries
+Meeting prep for Friday
 ```
 
 ### Things Integration Examples
@@ -415,35 +431,44 @@ Review my system health
 # Check your current setup
 Show my Today list
 What's in my inbox?
+Get my upcoming tasks
 
 # Add structured tasks
 Add project: Website redesign with tasks: wireframes, design, development
+Create a todo to prepare for meeting tomorrow
 
-# Context-based task filtering
+# Context-based task filtering  
 Show me @home tasks for low energy
+Find tasks tagged with @calls
+Search for tasks related to "project review"
+
+# Advanced operations
+Update task status to completed
+Move task to different project
+Set deadline for task
 ```
 
 ## 🚀 Daily Workflow
 
 ### Morning (10 minutes)
 
-1. **Natural planning**: "Plan my day" - automatically routes to Planning Agent
-2. **Inbox processing**: Agent processes Things Inbox to zero
-3. **Energy matching**: Agent schedules tasks optimally: Today → Upcoming → Anytime → Someday
+1. **Interactive planning**: "Plan my day" - routes to Daily Planning workflow
+2. **Guided inbox processing**: Interactive questions process Things Inbox to zero
+3. **Smart scheduling**: GTD Master schedules tasks optimally: Today → Upcoming → Anytime → Someday
 
 ### Throughout Day
 
-1. **Intelligent execution**: "What should I work on?" - routes to Execution Agent  
-2. **Context-aware suggestions**: Agent considers your energy, time, and location
-3. **Instant capture**: "Capture: [task]" - routes to Capture Agent automatically
-4. **Maintain focus**: Agent guides single-task execution
+1. **Context-aware execution**: "What should I work on?" - routes to Execution workflow  
+2. **Intelligent suggestions**: System considers your energy, time, and context
+3. **Built-in capture**: "Add task: [task]" - direct capture to Things Inbox
+4. **Focused work**: System guides single-task execution with context switching
 
 ### Weekly (20 minutes)
 
-1. **System maintenance**: "Start weekly review" - routes to Review Agent
-2. **Project health**: Agent reviews all Areas and Projects for next actions
-3. **Someday processing**: Agent helps move items through Someday → Anytime → Today flow
-4. **System optimization**: Agent maintains clean, trustworthy system
+1. **Strategic review**: "Start weekly review" - routes to Review Phase workflow
+2. **Project maintenance**: Interactive assessment of all Areas and Projects
+3. **Someday processing**: Guided movement through Someday → Anytime → Today flow
+4. **System health**: Automated maintenance for clean, trustworthy system
 
 ## 🛠 Customization
 
@@ -457,9 +482,9 @@ Want to adapt this system for your preferred todo app or workflow? Here's how:
 
 ### For Different Workflows
 
-1. **Modify Agent Prompts**: Edit the `.opencode/agent/*.md` files to match your preferred GTD approach
+1. **Modify Workflow Components**: Edit the `.opencode/agent/*.md` files to match your preferred GTD approach
 2. **Adjust Temperature Settings**: Fine-tune AI behavior in `opencode.json`
-3. **Customize Agent Routing**: Modify the GTD Master Agent logic for different workflow phases
+3. **Customize Routing Logic**: Modify the GTD Master Agent in `.opencode/prompts/gtd-master.md` for different workflow phases
 
 ## 🔒 Privacy Note
 
